@@ -4,11 +4,12 @@
  * RQM
  */
 
+ // imports
 import React, { Component } from 'react'
-import { Pane, Heading } from 'evergreen-ui'
 import $ from "jquery";
 
-//import './rqm.css'
+import { Pane, Button } from 'evergreen-ui'
+
 /**
  * // RANDOM QUOTE MACHINE 
  *  component class
@@ -22,21 +23,11 @@ class RQM extends Component {
 
   render() {
     return (
-      <div>
-      
         <Pane>
-          <Heading>Random Quote Machine</Heading>
-          <hr />
-        </Pane>
-        <Pane>
-          <i aria-hidden='true'></i>
           <p id="random_quote"></p>
-          <a id='btn0' href="#/" target="_blank">
-          <i aria-hidden="true"></i>Tweet</a>
-          <button id="btn1">Next Quote!</button>
+          <Button id="btn0">Tweet</Button>
+          <Button id="btn1">Next Quote!</Button>
         </Pane>
-
-      </div>
     )
   }
 }
