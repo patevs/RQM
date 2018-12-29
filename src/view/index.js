@@ -8,7 +8,7 @@
 import React, { Component } from 'react'
 import $ from "jquery";
 
-import { Pane, Button, majorScale } from 'evergreen-ui'
+import { Pane, Button, majorScale, Text } from 'evergreen-ui'
 import { Col } from 'reactstrap'
 
 // components
@@ -22,7 +22,10 @@ class RQM extends Component {
   
   constructor(props) {
     super(props);
-    this.state = {isToggleOn: true};
+    this.state = {
+      color: "#D5D6D7",
+      isToggleOn: true
+    };
 
     // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
@@ -37,11 +40,41 @@ class RQM extends Component {
 
   newQuote(){
     randomQuote();
-    color();
+    this.color();
   }
 
   componentDidMount(){
     this.newQuote();
+  }
+
+  color(){
+    var colorS = '#'+Math.floor(Math.random()*16777215).toString(16);
+    document.body.style.backgroundColor = this.shadeColor(colorS, -50);
+    document.getElementById("random_quote").style.backgroundColor = this.shadeColor(colorS, -20);
+    document.getElementById("btn1").style.background = this.shadeColor(colorS, -20);
+    //$("body").animate({backgroundColor:shadeColor(colorS,-5)},1000);
+    //$("#random_quote").animate({color:shadeColor(colorS,-20)},1000);
+    //$("#btn0").animate({backgroundColor:shadeColor(colorS,-20)},1000);
+    //$("#btn1").animate({backgroundColor:shadeColor(colorS,-20)},1000);
+    //$(".fa-quote-left").animate({color:shadeColor(colorS,-20)},1000);
+    //$(".fa-twitter").animate({backgroudColor:shadeColor(colorS,-20)},1000);
+  }
+
+    // credit: https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors/13532993#13532993
+  shadeColor(color, percent) {
+      var R = parseInt(color.substring(1,3),16);
+      var G = parseInt(color.substring(3,5),16);
+      var B = parseInt(color.substring(5,7),16);
+      R = parseInt(R * (100 + percent) / 100);
+      G = parseInt(G * (100 + percent) / 100);
+      B = parseInt(B * (100 + percent) / 100);
+      R = (R<255)?R:255;  
+      G = (G<255)?G:255;  
+      B = (B<255)?B:255;  
+      var RR = ((R.toString(16).length===1)?"0"+R.toString(16):R.toString(16));
+      var GG = ((G.toString(16).length===1)?"0"+G.toString(16):G.toString(16));
+      var BB = ((B.toString(16).length===1)?"0"+B.toString(16):B.toString(16));
+      return "#"+RR+GG+BB;
   }
 
   render() {
@@ -55,8 +88,11 @@ class RQM extends Component {
             align="center" 
             marginBottom={majorScale(7)}
           >
-            <Col>
-              <p id="random_quote"></p>
+            <Col sm={12} md={6}>
+              <Pane
+              >
+                <Text id="random_quote" style={{padding: 42}}></Text>
+              </Pane>
             </Col>
           </Pane>
 
@@ -113,28 +149,6 @@ function randomQuote(){
   });
 }
 
-function color(){
-  var colorS = '#'+Math.floor(Math.random()*16777215).toString(16);
-  $("body").animate({backgroundColor:shadeColor(colorS,-5)},1000);
-  $("#random_quote").animate({color:shadeColor(colorS,-20)},1000);
-  $("#btn0").animate({backgroundColor:shadeColor(colorS,-20)},1000);
-  $("#btn1").animate({backgroundColor:shadeColor(colorS,-20)},1000);
-  //$(".fa-quote-left").animate({color:shadeColor(colorS,-20)},1000);
-  //$(".fa-twitter").animate({backgroudColor:shadeColor(colorS,-20)},1000);
-}
-// credit: https://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors/13532993#13532993
-function shadeColor(color, percent) {
-    var R = parseInt(color.substring(1,3),16);
-    var G = parseInt(color.substring(3,5),16);
-    var B = parseInt(color.substring(5,7),16);
-    R = parseInt(R * (100 + percent) / 100);
-    G = parseInt(G * (100 + percent) / 100);
-    B = parseInt(B * (100 + percent) / 100);
-    R = (R<255)?R:255;  
-    G = (G<255)?G:255;  
-    B = (B<255)?B:255;  
-    var RR = ((R.toString(16).length===1)?"0"+R.toString(16):R.toString(16));
-    var GG = ((G.toString(16).length===1)?"0"+G.toString(16):G.toString(16));
-    var BB = ((B.toString(16).length===1)?"0"+B.toString(16):B.toString(16));
-    return "#"+RR+GG+BB;
-}
+
+
+
