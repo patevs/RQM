@@ -23,13 +23,24 @@ class RQM extends Component {
 
   render() {
     return (
-        <Pane>
+        <Pane align="center">
+
           <p id="random_quote"></p>
-          <Button id="btn0">Tweet</Button>
-          <Button id="btn1">Next Quote!</Button>
+          <hr />
+        
+          <Button 
+            id="btn0"
+          >Tweet
+          </Button>
+          <Button 
+            id="btn1"
+          >Next Quote!
+          </Button>
+        
         </Pane>
     )
   }
+
 }
 
 export default RQM;
