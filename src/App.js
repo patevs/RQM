@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import './App.css';
 
 class App extends Component {
   render(){
-    return((
+    return(
       <div>
         <h1>App component</h1>
       </div>
