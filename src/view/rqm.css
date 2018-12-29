@@ -1,6 +1,3 @@
-body{
-
-}
 .wrapper{
   position: fixed;
   top: 20%;
@@ -22,6 +19,12 @@ p{
   margin-top: -1.1em;
   font-size: 1.39em;
 }
+.fa-twitter{
+  color:white;
+  position:relative;
+  top: 6px;
+  left: -3px;
+}
 #btn0{
     text-decoration:none;
     position: relative;
@@ -35,12 +38,6 @@ p{
     color: white;
     border-radius: 5%;
     font-size: 1em;
-}
-.fa-twitter{
-  color:white;
-  position:relative;
-  top: 6px;
-  left: -3px;
 }
 #btn1{
     height:42px; 
