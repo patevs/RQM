@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.2.1",
+    "evergreen-ui": "^4.8.0",
     "jquery": "^3.0.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
