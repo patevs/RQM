@@ -8,7 +8,11 @@
 import React, { Component } from 'react'
 import $ from "jquery";
 
-import { Pane, Button } from 'evergreen-ui'
+import { Pane, Button, majorScale } from 'evergreen-ui'
+import { Col } from 'reactstrap'
+
+// components
+import Divider from '../shared/Divider'
 
 /**
  * // RANDOM QUOTE MACHINE 
@@ -16,32 +20,76 @@ import { Pane, Button } from 'evergreen-ui'
  */
 class RQM extends Component {
   
-  componentDidMount(){
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    console.log('this is:', this);
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    }));
+  }
+
+  newQuote(){
     randomQuote();
     color();
   }
 
+  componentDidMount(){
+    this.newQuote();
+  }
+
   render() {
     return (
-        <Pane align="center">
+        <Pane 
+          align="center"
+          marginTop={majorScale(7)}
+        >
 
-          <p id="random_quote"></p>
-          <hr />
-        
+          <Pane 
+            align="center" 
+            marginBottom={majorScale(7)}
+          >
+            <Col>
+              <p id="random_quote"></p>
+            </Col>
+          </Pane>
+
+          <Divider />
+
           <Button 
-            id="btn0"
-          >Tweet
-          </Button>
-          <Button 
+            appearance="primary"
+            intent="success"
+            marginTop={majorScale(4)}
+            height={majorScale(7)}
+            onClick={(e) => this.newQuote(e)}
             id="btn1"
           >Next Quote!
           </Button>
-        
+
         </Pane>
     )
   }
 
 }
+
+/*
+
+          <Button onClick={this.handleClick}>
+            {this.state.isToggleOn ? 'ON' : 'OFF'}
+          </Button>
+          <Button 
+            onClick={(e) => this.handleClick(e)}
+            id="btn0"
+          >Tweet
+          </Button>
+
+ */
 
 export default RQM;
 

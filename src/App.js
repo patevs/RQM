@@ -9,23 +9,36 @@ import React, { Component } from 'react';
 import { Pane, Heading } from 'evergreen-ui'
 
 // components
+
+import Divider from './shared/Divider'
+
 import RQM from './view'
 
+// Title component
+const Title = () => (
+  <Pane align="center">
+    <Heading
+      size={900}
+      align="center"
+      marginTop={42}
+      marginBottom={21}
+    >
+      Random Quote Machine
+    </Heading>
+  </Pane>
+);
+
+/**
+ * App component class
+ */
 class App extends Component {
   render(){
     return(
       <Pane>
-        <Heading
-        size="900"
-        align="center"
-        marginTop={42}
-        marginBottom={21}
-        >
-          Random Quote Machine
-        </Heading>
-        <hr />
+        <Title />
+        <Divider />
         <RQM />
-        <hr />
+        <Divider />
       </Pane>
     )
   }
