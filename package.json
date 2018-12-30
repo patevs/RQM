@@ -1,6 +1,6 @@
 {
   "name": "random-quote-machine",
-  "version": "1.3.6",
+  "version": "1.4.2",
   "private": true,
   "homepage" : "http://patevs.github.io/Random-Quote-Machine",
   "dependencies": {

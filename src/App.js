@@ -18,10 +18,11 @@ import RQM from './view'
 const Title = () => (
   <Pane align="center">
     <Heading
-      size={900}
+      size={700}
       align="center"
       marginTop={42}
       marginBottom={21}
+      color={"white"}
     >
       Random Quote Machine
     </Heading>

@@ -9,7 +9,7 @@ import React, { Component } from 'react'
 import $ from "jquery";
 
 import { Pane, Button, majorScale, Text } from 'evergreen-ui'
-import { Col } from 'reactstrap'
+import { Container, Col } from 'reactstrap'
 
 // components
 import Divider from '../shared/Divider'
@@ -26,7 +26,6 @@ class RQM extends Component {
       color: "#D5D6D7",
       isToggleOn: true
     };
-
     // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
   }
@@ -51,6 +50,7 @@ class RQM extends Component {
     var colorS = '#'+Math.floor(Math.random()*16777215).toString(16);
     document.body.style.backgroundColor = shadeColor(colorS, -5);
     document.getElementById("random_quote").style.backgroundColor = shadeColor(colorS, -20);
+    document.getElementById("random_quote").style.color = shadeColor(colorS, -20);
     document.getElementById("btn1").style.background = shadeColor(colorS, -20);
     //$("body").animate({backgroundColor:shadeColor(colorS,-5)},1000);
     //$("#random_quote").animate({color:shadeColor(colorS,-20)},1000);
@@ -61,56 +61,45 @@ class RQM extends Component {
   }
 
   render() {
-    return (
-        <Pane 
-          align="center"
-          marginTop={majorScale(7)}
-        >
+    return( 
+      <Container>
 
-          <Pane 
-            align="center" 
-            marginBottom={majorScale(7)}
-          >
-            <Col sm={12} md={6}>
-              <Pane
-              >
-                <Text id="random_quote" style={{padding: 42}}></Text>
-              </Pane>
+        <Pane align="center" marginTop={majorScale(7)}>
+
+          <Pane align="center" marginBottom={majorScale(7)} background="white">
+            <Col>
+              <Text color={"black"} id="random_quote" />
             </Col>
           </Pane>
 
           <Divider />
 
-          <Button 
-            appearance="primary"
-            intent="success"
-            marginTop={majorScale(4)}
-            height={majorScale(7)}
-            onClick={(e) => this.newQuote(e)}
-            id="btn1"
-          >Next Quote!
+          <Button appearance="primary" intent="success" marginTop={majorScale(4)} height={majorScale(7)} onClick={e => this.newQuote(e)} id="btn1">
+            Next Quote!
           </Button>
-
+        
         </Pane>
-    )
+
+      </Container>
+    );
   }
 
 }
+
+export default RQM;
 
 /*
 
           <Button onClick={this.handleClick}>
             {this.state.isToggleOn ? 'ON' : 'OFF'}
           </Button>
-          <Button 
+          <Button
             onClick={(e) => this.handleClick(e)}
             id="btn0"
           >Tweet
           </Button>
 
  */
-
-export default RQM;
 
 function randomQuote(){
   $.ajax({   
