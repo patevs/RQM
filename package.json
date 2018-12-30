@@ -1,8 +1,8 @@
 {
   "name": "random-quote-machine",
-  "version": "1.4.2",
+  "version": "1.6.1",
   "private": true,
-  "homepage" : "http://patevs.github.io/Random-Quote-Machine",
+  "homepage" : "http://patevs.github.io/RQM",
   "dependencies": {
     "bootstrap": "^4.2.1",
     "evergreen-ui": "^4.8.0",
